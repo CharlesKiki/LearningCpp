@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <alloc.h>
+#include <malloc.h>
 #include <string.h>
 #include <dos.h>
 
@@ -8,7 +8,6 @@ int main(void)
 {
    char *path, *ptr;
    int i = 0;
-   clrscr();
    puts(" This program is to get the Path and change it.");
    /* 获得当前环境变量中的path信息 */
    ptr = getenv("PATH");
@@ -24,6 +23,5 @@ int main(void)
    while (environ[i]) /*循环输出所有的环境变量*/
        printf(" >> %s\n",environ[i++]);
    printf(" Press any key to quit...");
-   getch();
    return 0;
-}
+}

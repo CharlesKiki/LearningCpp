@@ -1,9 +1,16 @@
 #include <stdio.h>
 #include <dos.h>
-void main(void)
+#include <dir.h>
+
+int main(void)
 {
 	struct country info;
-	clrscr();
+	/*
+	Delete some TC function.
+	There is missing some context of this program
+	If can find the country code,
+	the problem can be solved.
+	*/
 	puts(" This program is to get the country information:");
 	country(0, &info);
 
@@ -39,6 +46,3 @@ void main(void)
 	printf(" Press any key to quit...");
 	getch();
 }
-
-
-

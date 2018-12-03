@@ -7,9 +7,11 @@
 #include <io.h>
 #include <sys\stat.h>
 
-void main( int argc, char* argv[] )
+void main()
+//In Windwos , how to stander transform value
 {
 	struct time now;
+	//It seem like other Compiler programmar
 	FILE* fp;
 	int errno;
 	gettime( &now );
@@ -33,5 +35,4 @@ void main( int argc, char* argv[] )
 	}
 	printf(" You are a legitimate user to run this program!\n");
 	getch();
-	return;
 }

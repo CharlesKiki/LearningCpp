@@ -1,6 +1,9 @@
 /* ÔÚBC31ÏÂ±àÒë */
 /* compile under Borland C++ 3.1 */
-
+/* This code can not compile in GCC*/
+/* bios.h only support in DOS,NOT VC*/
+/* To finish this part,should use Windows API*/
+/* Focus:ANSIC Stander*/
 #include <stdio.h>
 #include <bios.h>
 
