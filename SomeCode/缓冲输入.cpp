@@ -5,9 +5,9 @@ int main(void)
     char ch;
     printf("Input a character:");
     ch=getchar();
-    //注意这个函数是缓冲区函数，直到Enter之后才会将缓存区内容推入程序
-    //关于它的工作方式，它是一个一个字符返回值给程序的
-    //如果出错则会返回-1
+    //缓冲区函数，直到Enter之后才会将缓存区内容推入程序
+    //一个一个字符返回值给程序的
+    //出错则会返回-1
     printf("\nYou input a '%c'\n", ch);
     ch = getche();
     //这个函数带有回显功能，作用在控制台
@@ -29,7 +29,7 @@ void main() //注意这个函数的定义在C++和C都是错误的
 {
 
 }
-int main( void )  //z正确方式 
+int main( void )  //正确方式 
 {
 
 }

@@ -1,4 +1,3 @@
-//42 1610242852 16 ÕÅ¿¡×æ
 #include <iostream>
 
 using namespace std;
