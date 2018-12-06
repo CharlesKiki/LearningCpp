@@ -1,4 +1,5 @@
 #include <graphics.h>
+/*This program is written by TC*/
 void main()
 {
 	int gdriver=DETECT,gmode;
