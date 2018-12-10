@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <conio.h>
-void main(void)
+int main()
 {
 	int i,j,x,y;
-	clrscr();
 	printf("\n\n  * * * ³Ë·¨¿Ú¾÷±í * * * \n\n");
 	x=9;
 	y=5;
@@ -35,6 +34,7 @@ void main(void)
 		x+=3;
 	}
 	printf("\n\n");
+	return 0;
 }
 
 

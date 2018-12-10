@@ -20,7 +20,7 @@ main()
 	{
 		printf("\nInput a command:[e,r,i,d,q].\n");
 		gets(buffer);/*读入命令行*/
-		for(chpt=buffer;*chpt==''||*chpt=='\t';chpt++);/*掠过空白符*/
+		for(chpt=buffer;*chpt==' '||*chpt=='\t';chpt++);/*掠过空白符*/
 		if(*chpt=='\0') continue;/*空行重新输入*/
 		for(j=0;comch[j]!='\0'&&comch[j]!=*chpt;j++);/*查命令符*/
 		if(comch[j]=='\0') continue;/*非法命令符*/
@@ -158,6 +158,3 @@ void edit()	/* 编辑命令 */
 	fclose(fp);
 	last=i;
 }
-		
-	
-		
