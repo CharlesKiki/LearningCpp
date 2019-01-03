@@ -7,6 +7,9 @@
 按学号寻找其记录并显示，浏览全部学生成绩和按总分由高到低显示学生信息等。
 */
 
+#include <stdlib.h>
+#include <malloc.h>
+#include <string.h>
 #include <stdio.h>
 #define	SWN		3	/* 课程数 */
 #define NAMELEN		20	/* 姓名最大字符数 */
@@ -42,7 +45,7 @@ int readrecord(FILE *fpt,struct record *rpt)
 	char buf[BUFLEN];
 	int i;
 	if(fscanf(fpt,"%s",buf)!=1)
-		return 0;	/* 文件结束 */
+		return 0;				/* 文件结束 */
 	strncpy(rpt->name,buf,NAMELEN);
 	fscanf(fpt,"%s",buf);
 	strncpy(rpt->code,buf,CODELEN);
@@ -53,25 +56,29 @@ int readrecord(FILE *fpt,struct record *rpt)
 	return 1;
 }
 /* 对指定文件写入一个记录 */
-writerecord(FILE *fpt,struct record *rpt)
+void writerecord(FILE *fpt,struct record *rpt)
 {
 	int i;
 	fprintf(fpt,"%s\n",rpt->name);
 	fprintf(fpt,"%s\n",rpt->code);
 	for(i=0;i<SWN;i++)
-		fprintf(fpt,"%d\n",rpt->marks[i]);
+		{
+			fprintf(fpt,"%d\n",rpt->marks[i]);
+		}
 	return ;
 }
 
 /* 显示学生记录 */
-displaystu(struct record *rpt)
+void displaystu(struct record *rpt)
 {
 	int i;
 	printf("\nName   : %s\n",rpt->name);
 	printf("Code   : %s\n",rpt->code);
 	printf("Marks  :\n");
 	for(i=0;i<SWN;i++)
+	{
 		printf("       %-15s : %4d\n",schoolwork[i],rpt->marks[i]);
+	}	
 	printf("Total  : %4d\n",rpt->total);
 }
 
@@ -92,7 +99,9 @@ int totalmark(char *fname)
 	while(readrecord(fp,&s)!=0)
 	{
 		for(i=0;i<SWN;i++)
+		{
 			total[i]+=s.marks[i];
+		}
 		count++;
 	}
 	fclose(fp);
@@ -225,7 +234,6 @@ main()
 	char buf[BUFLEN];
 	FILE *fp;
 	struct record s;
-	clrscr();
 	printf("Please input the students marks record file's name: ");
 	scanf("%s",stuf);
 	if((fp=fopen(stuf,"r"))==NULL)
@@ -322,4 +330,4 @@ main()
 			default: break;
 		}
 	}
-}
+}
