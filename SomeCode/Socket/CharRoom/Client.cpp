@@ -10,7 +10,7 @@
 #define RECV_YET 0
 char userName[16] = { 0 };
 int iStatus = RECV_YET;
-//½ÓÊÜÊı¾İ
+//æ¥å—æ•°æ®
 unsigned __stdcall ThreadRecv(void* param)
 {
 	char buf[128] = { 0 };
@@ -35,7 +35,7 @@ unsigned __stdcall ThreadRecv(void* param)
 	return 0;
 }
 
-//·¢ËÍÊı¾İ
+//å‘é€æ•°æ®
 unsigned __stdcall ThreadSend(void* param)
 {
 	char buf[128] = { 0 };
@@ -43,10 +43,10 @@ unsigned __stdcall ThreadSend(void* param)
 	while (1)
 	{
 		int c = _getch();
-		if (c == 72 || c == 0 || c == 68)//ÎªÁËÏÔÊ¾ÃÀ¹Û£¬¼ÓÒ»¸öÎŞ»ØÏÔµÄ¶ÁÈ¡×Ö·ûº¯Êı
-			continue;                   //getch·µ»ØÖµÎÒÊÇ¾­¹ıÊµÑéµÃ³öÈç¹ûÊÇ·µ»ØÕâ¼¸¸öÖµ£¬Ôògetch¾Í»á×Ô¶¯Ìø¹ı£¬¾ßÌåÎÒÒ²²»¶®¡£
+		if (c == 72 || c == 0 || c == 68)//ä¸ºäº†æ˜¾ç¤ºç¾è§‚ï¼ŒåŠ ä¸€ä¸ªæ— å›æ˜¾çš„è¯»å–å­—ç¬¦å‡½æ•°
+			continue;                   //getchè¿”å›å€¼æˆ‘æ˜¯ç»è¿‡å®éªŒå¾—å‡ºå¦‚æœæ˜¯è¿”å›è¿™å‡ ä¸ªå€¼ï¼Œåˆ™getchå°±ä¼šè‡ªåŠ¨è·³è¿‡ï¼Œå…·ä½“æˆ‘ä¹Ÿä¸æ‡‚ã€‚
 		printf("%s: ", userName);
-		gets_s(buf);
+		gets(buf);
 		ret = send(*(SOCKET*)param, buf, sizeof(buf), 0);
 		if (ret == SOCKET_ERROR)
 			return 1;
@@ -54,43 +54,43 @@ unsigned __stdcall ThreadSend(void* param)
 	return 0;
 }
 
-//Á¬½Ó·şÎñÆ÷
+//è¿æ¥æœåŠ¡å™¨
 int ConnectServer()
 {
-	WSADATA wsaData = { 0 };//´æ·ÅÌ×½Ó×ÖĞÅÏ¢
-	SOCKET ClientSocket = INVALID_SOCKET;//¿Í»§¶ËÌ×½Ó×Ö
-	SOCKADDR_IN ServerAddr = { 0 };//·şÎñ¶ËµØÖ·
-	USHORT uPort = 18000;//·şÎñ¶Ë¶Ë¿Ú
-	//³õÊ¼»¯Ì×½Ó×Ö
+	WSADATA wsaData = { 0 };//å­˜æ”¾å¥—æ¥å­—ä¿¡æ¯
+	SOCKET ClientSocket = INVALID_SOCKET;//å®¢æˆ·ç«¯å¥—æ¥å­—
+	SOCKADDR_IN ServerAddr = { 0 };//æœåŠ¡ç«¯åœ°å€
+	USHORT uPort = 18000;//æœåŠ¡ç«¯ç«¯å£
+	//åˆå§‹åŒ–å¥—æ¥å­—
 	if (WSAStartup(MAKEWORD(2, 2), &wsaData))
 	{
 		printf("WSAStartup failed with error code: %d\n", WSAGetLastError());
 		return -1;
 	}
-	//ÅĞ¶ÏÌ×½Ó×Ö°æ±¾
+	//åˆ¤æ–­å¥—æ¥å­—ç‰ˆæœ¬
 	if (LOBYTE(wsaData.wVersion) != 2 || HIBYTE(wsaData.wVersion) != 2)
 	{
 		printf("wVersion was not 2.2\n");
 		return -1;
 	}
-	//´´½¨Ì×½Ó×Ö
+	//åˆ›å»ºå¥—æ¥å­—
 	ClientSocket = socket(AF_INET, SOCK_STREAM, 0);
 	if (ClientSocket == INVALID_SOCKET)
 	{
 		printf("socket failed with error code: %d\n", WSAGetLastError());
 		return -1;
 	}
-	//ÊäÈë·şÎñÆ÷IP
+	//è¾“å…¥æœåŠ¡å™¨IP
 	printf("Please input server IP:");
 	char IP[32] = { 0 };
-	gets_s(IP);
-	//ÉèÖÃ·şÎñÆ÷µØÖ·
+	gets(IP);
+	//è®¾ç½®æœåŠ¡å™¨åœ°å€
 	ServerAddr.sin_family = AF_INET;
-	ServerAddr.sin_port = htons(uPort);//·şÎñÆ÷¶Ë¿Ú
-	ServerAddr.sin_addr.S_un.S_addr = inet_addr(IP);//·şÎñÆ÷µØÖ·
+	ServerAddr.sin_port = htons(uPort);//æœåŠ¡å™¨ç«¯å£
+	ServerAddr.sin_addr.S_un.S_addr = inet_addr(IP);//æœåŠ¡å™¨åœ°å€
 
 	printf("connecting......\n");
-	//Á¬½Ó·şÎñÆ÷
+	//è¿æ¥æœåŠ¡å™¨
 	if (SOCKET_ERROR == connect(ClientSocket, (SOCKADDR*)&ServerAddr, sizeof(ServerAddr)))
 	{
 		printf("connect failed with error code: %d\n", WSAGetLastError());
@@ -101,13 +101,13 @@ int ConnectServer()
 	printf("Connecting server successfully IP:%s Port:%d\n",
 		IP, htons(ServerAddr.sin_port));
 	printf("Please input your UserName: ");
-	gets_s(userName);
+	gets(userName);
 	send(ClientSocket, userName, sizeof(userName), 0);
 	printf("\n\n");
-	_beginthreadex(NULL, 0, ThreadRecv, &ClientSocket, 0, NULL); //Æô¶¯½ÓÊÕºÍ·¢ËÍÏûÏ¢Ïß³Ì
+	_beginthreadex(NULL, 0, ThreadRecv, &ClientSocket, 0, NULL); //å¯åŠ¨æ¥æ”¶å’Œå‘é€æ¶ˆæ¯çº¿ç¨‹
 	_beginthreadex(NULL, 0, ThreadSend, &ClientSocket, 0, NULL);
 	for (int k = 0; k < 1000; k++)
-		Sleep(10000000);//Ë¯ÃßÖ÷Ïß³Ì ±£³ÖTCPÁ¬½ÓµÄ´ò¿ª
+		Sleep(10000000);//ç¡çœ ä¸»çº¿ç¨‹ ä¿æŒTCPè¿æ¥çš„æ‰“å¼€
 	closesocket(ClientSocket);
 	WSACleanup();
 	return 0;
@@ -115,6 +115,6 @@ int ConnectServer()
 
 int main()
 {
-	ConnectServer(); //Á¬½Ó·şÎñÆ÷
+	ConnectServer(); //è¿æ¥æœåŠ¡å™¨
 	return 0;
 }

@@ -4,29 +4,29 @@
 #include<process.h>
 #pragma comment(lib,"ws2_32.lib")
 
-#define SEND_OVER 1 //ÒÑ×ª·¢
-#define SEND_YET 0   //Î´×ª·¢
+#define SEND_OVER 1 //ï¿½ï¿½×ªï¿½ï¿½
+#define SEND_YET 0   //Î´×ªï¿½ï¿½
 
 int g_iStatus = SEND_YET;
-SOCKET g_ServerSocket = INVALID_SOCKET;		 //·þÎñ¶ËÌ×½Ó×Ö
-SOCKADDR_IN g_ClientAddr = { 0 };			 //¿Í»§¶ËµØÖ·
+SOCKET g_ServerSocket = INVALID_SOCKET;		 //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×½ï¿½ï¿½ï¿½
+SOCKADDR_IN g_ClientAddr = { 0 };			 //ï¿½Í»ï¿½ï¿½Ëµï¿½Ö·
 int g_iClientAddrLen = sizeof(g_ClientAddr);
-bool g_bCheckConnect = false;                //¼ì²éÁ¬½ÓÇé¿ö
+bool g_bCheckConnect = false;                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-//¿Í»§¶ËÐÅÏ¢½á¹¹Ìå
+//ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½á¹¹ï¿½ï¿½
 typedef struct _Client
 {
-	SOCKET sClient;      //¿Í»§¶ËÌ×½Ó×Ö
-	char buf[128];		 //Êý¾Ý»º³åÇø
-	char userName[16];   //¿Í»§¶ËÓÃ»§Ãû
-	char IP[20];		 //¿Í»§¶ËIP
-	UINT_PTR flag;       //±ê¼Ç¿Í»§¶Ë£¬ÓÃÀ´Çø·Ö²»Í¬µÄ¿Í»§¶Ë
+	SOCKET sClient;      //ï¿½Í»ï¿½ï¿½ï¿½ï¿½×½ï¿½ï¿½ï¿½
+	char buf[128];		 //ï¿½ï¿½ï¿½Ý»ï¿½ï¿½ï¿½ï¿½ï¿½
+	char userName[16];   //ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½
+	char IP[20];		 //ï¿½Í»ï¿½ï¿½ï¿½IP
+	UINT_PTR flag;       //ï¿½ï¿½Ç¿Í»ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö²ï¿½Í¬ï¿½Ä¿Í»ï¿½ï¿½ï¿½
 }Client;
 
 Client g_Client[10] = { 0 };
 
 
-//·¢ËÍÊý¾Ý
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 unsigned __stdcall ThreadSend(void *param)
 {
 	int ret = 0;
@@ -46,10 +46,10 @@ unsigned __stdcall ThreadSend(void *param)
 	}
 	if (ret == SOCKET_ERROR)
 		return 1;
-	g_iStatus = SEND_OVER;   //×ª·¢³É¹¦ºóÉèÖÃ×´Ì¬ÎªÒÑ×ª·¢
+	g_iStatus = SEND_OVER;   //×ªï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬Îªï¿½ï¿½×ªï¿½ï¿½
 	return 0;
 }
-//½ÓÊÕÊý¾Ý
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 unsigned __stdcall ThreadRecv(void * param)
 {
 	SOCKET client = INVALID_SOCKET;
@@ -68,10 +68,10 @@ unsigned __stdcall ThreadRecv(void * param)
 	while (1)
 	{
 		memset(temp, 0, sizeof(temp));
-		int ret = recv(client, temp, sizeof(temp), 0);//½ÓÊÕÊý¾Ý
+		int ret = recv(client, temp, sizeof(temp), 0);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if (ret == SOCKET_ERROR)
 			continue;
-		g_iStatus = SEND_YET; //ÉèÖÃ×ª·¢×´Ì¬ÎªÎ´×ª·¢
+		g_iStatus = SEND_YET; //ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½×´Ì¬ÎªÎ´×ªï¿½ï¿½
 		memcpy(g_Client[flag].buf, temp, sizeof(g_Client[flag].buf));
 		_beginthreadex(NULL, 0, ThreadSend, &flag, 0, NULL);
 	}
@@ -80,7 +80,7 @@ unsigned __stdcall ThreadRecv(void * param)
 }
 
 
-//Ïß³ÌÁ¬½Ó¹ÜÀí
+//ï¿½ß³ï¿½ï¿½ï¿½ï¿½Ó¹ï¿½ï¿½ï¿½
 unsigned __stdcall ThreadManager(void *param)
 {
 	while (1)
@@ -97,7 +97,7 @@ unsigned __stdcall ThreadManager(void *param)
 				}
 			}
 		}
-		Sleep(2000); //2s¼ì²éÒ»´Î
+		Sleep(2000); //2sï¿½ï¿½ï¿½Ò»ï¿½ï¿½
 	}
 	return 0;
 }
@@ -124,11 +124,11 @@ unsigned __stdcall ThreadAccept(void *param)
 				WSACleanup();
 				return -1;
 			}
-			recv(g_Client[i].sClient, g_Client[i].userName, sizeof(g_Client[i].userName), 0); //½ÓÊÕÓÃ»§Ãû
+			recv(g_Client[i].sClient, g_Client[i].userName, sizeof(g_Client[i].userName), 0); //ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½
 			printf("Successfuuly got a connection from IP:%s ,Port: %d,UerName: %s\n",
 				inet_ntoa(g_ClientAddr.sin_addr), htons(g_ClientAddr.sin_port), g_Client[i].userName);
-			memcpy(g_Client[i].IP, inet_ntoa(g_ClientAddr.sin_addr), sizeof(g_Client[i].IP)); //¼ÇÂ¼¿Í»§¶ËIP
-			g_Client[i].flag = g_Client[i].sClient;//²»Í¬µÄsocketÓÐ²»Í¬µÄUINTÊý×Ö±êÊ¶
+			memcpy(g_Client[i].IP, inet_ntoa(g_ClientAddr.sin_addr), sizeof(g_Client[i].IP)); //ï¿½ï¿½Â¼ï¿½Í»ï¿½ï¿½ï¿½IP
+			g_Client[i].flag = g_Client[i].sClient;//ï¿½ï¿½Í¬ï¿½ï¿½socketï¿½Ð²ï¿½Í¬ï¿½ï¿½UINTï¿½ï¿½ï¿½Ö±ï¿½Ê¶
 			_beginthreadex(NULL, 0, ThreadRecv, &g_Client[i].flag, 0, NULL);
 
 			i++;
@@ -166,7 +166,7 @@ int StartServer()
 		return -1;
 	}
 
-	//´´½¨Ì×½Ó×Ö
+	//ï¿½ï¿½ï¿½ï¿½ï¿½×½ï¿½ï¿½ï¿½
 	g_ServerSocket = socket(AF_INET, SOCK_STREAM, 0);
 	if (g_ServerSocket == INVALID_SOCKET)
 	{
@@ -213,7 +213,6 @@ int StartServer()
 
 int main()
 {
-	StartServer();//¿ªÆô·þÎñÆ÷
+	StartServer();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	return 0;
 }
-

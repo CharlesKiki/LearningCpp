@@ -9,7 +9,7 @@ void Mix(int Num,int *Sum,long long *Total)
     {
         *Total=*Total*num;
     }
-//------------------·Ö¸îÏß-----------------
+//------------------åˆ†å‰²çº¿-----------------
     *Sum=0;
     int num=1;
 	while(num<=Num)
@@ -21,8 +21,8 @@ void Mix(int Num,int *Sum,long long *Total)
 
 int main()
 {
-	int out1=0;  //Ö¸ÏòÀÛ¼ÓºÍ
-	long long out2=0;  //Ö¸Ïò½×³Ë
+	int out1=0;  //æŒ‡å‘ç´¯åŠ å’Œ
+	long long out2=0;  //æŒ‡å‘é˜¶ä¹˜
     for(int Number=1;Number<=10;Number++)
     {
         Mix(Number,&out1,&out2);

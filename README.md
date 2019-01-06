@@ -1,5 +1,19 @@
-# LearningCpp
-Hi guys , I hope you can find some usful code to help you learning cpp( most of the code is simple).There are many funny little project like StudentManagement and graph sample.
+# 这是什么？
 
-ComileDetail Folder:
-	contains some sample of compiling process, like linking.
+我相信绝大多数人都看过菜鸟教程吧。
+
+这个项目就是我对CPP的大部分知识点的代码示例。
+
+这些代码尽可能的分类详细，并且成为单独的模块可以使用。
+
+## 怎么运行？ ##
+
+因为我同时想要让代码具备可移植性。所以尽可能的使用语言库，以及很多通用的功能。比如可能涉及的数据库编程。
+
+运行的环境：我的环境是 Windows10
+
+编译器：MinGW
+
+> 需要注意的是，实际上有一些程序是设计在Linux运行，相对应的有环境配置步骤。例如，简易服务器程序。
+
+**这些代码用例离不开众多作者的分享，感谢你们。**
