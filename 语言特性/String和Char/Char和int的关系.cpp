@@ -10,6 +10,9 @@ int main() {
 		结果：赋值74的char类型输出为：J
 		结论:char类型的值是十进制数字，用char类型解释后映射成为字符，在内存中以二进制存储。
 	*/
+	char number = '1';
+	cout << "赋值为字符型数字'1'的字符保存的值为：" << int(number) << endl;
+	//赋值为字符型数字'1'的字符保存的值为：49
 	system("pause");
 	return 0;
 }
