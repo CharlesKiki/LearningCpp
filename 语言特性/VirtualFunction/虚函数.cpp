@@ -1,38 +1,59 @@
-//静态多态=早绑定
-//动态多态=晚绑定
+#include<iostream>
+using namespace std;
+/*
+	程序功能：测试程序的方法实例化时期
+*/
+
+/*
+	类 Rect 矩形和长宽参数
+	方法Area(int width);
+	方法Area(int width,int height);重载
+*/
 class Rect
 {
 	public:
 	int Area(int width);
 	int Area(int width,int height);
 };
-int main(void)
+/*
+	测试用例：
+	硬编码写入参数的情况下：编译器自动调动实例化内的重载
+    编译器在实例化（编译）时就已经确定了函数使用，早绑定
+*/
+int Example(void)
 {
 	Rect rect;
 	rect.Area(10);
 	rect.Area(10,20);
 	return 0;
 }
-//编译器自动调动实例化内的重载
-//编译器在实例化（编译）时就已经确定了函数使用=早绑定
 
-class Shape  //父类
+/*
+	类Shape 
+	虚函数calcArea();
+*/
+class Shape
 {
 	public:
-	virtual double calcArea();//虚函数 实现多态
-	{
-		cout<<"calcArea"<<endl;
-		return 0;
-	}
+			virtual double calcArea();
+			{
+				cout<<"calcArea"<<endl;
+				return 0;
+			}
 };
+/*
+	类Circle 继承 Shape 
+	子类实现方法Circle(double r);
+	虚函数calcArea()重载。
+	注：在子类中实际上不用加上virtual关键字 但是方便观察
+*/
 class Circle : public Shape
 {
 	public:
-	Circle(double r);
-	virtual double calcArea();
-	//在子类中实际上不用加上virtual关键字 但是方便观察
+			Circle(double r);
+			virtual double calcArea();
 	private:
-	double m_dR;
+			double m_dR;
 };
 double Circle::calcArea()
 {
@@ -59,10 +80,6 @@ int main(void)
 	shape2->calcArea();
 	delete shape1;
 	delete shape2;
-	//注意防止内存泄露
+	//注意防止内存泄露，new delete方法成对使用
 	return 0;
 }
-//new 关键字
-//C++在创建对象的时候可以采用两种方式：（例如类名为Test） Test test  或者 Test* pTest = new Test()。
-//析构函数，删除该对象.
-//使用new创建对象是创建在堆中的，必须要程序员手动的去管理该对象的内存空间.

@@ -1,2 +1,0 @@
-First of all , most of there code are written by TC and DOS environment.
-Therefore , I plan rewrite it ,and each part I will make two platform on Windows and Linux.
