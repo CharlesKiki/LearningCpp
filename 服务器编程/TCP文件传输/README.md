@@ -1,0 +1,1 @@
+实际上FTP File Transfer Protocol文件传输协议更加适合这个功能。但是这样也只是局限于新的功能开发，实际上CMD就有ftp这个基本功能。
