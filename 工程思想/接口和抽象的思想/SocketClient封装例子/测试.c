@@ -5,27 +5,27 @@
 #include <stdio.h>
 
 
-//socket¿Í»§¶Ë»·¾³³õÊ¼»¯
+//socketå®¢æˆ·ç«¯ç¯å¢ƒåˆå§‹åŒ–
 int socketclient_init2(void **handle)
 {
 	return 0;
 }
 
-//socket¿Í»§¶Ë±¨ÎÄ·¢ËÍ
+//socketå®¢æˆ·ç«¯æŠ¥æ–‡å‘é€
 int socketclient_send2(void *handle, unsigned char *buf, int buflen)
 
 {
 	return 0;
 }
 
-//socket¿Í»§¶Ë±¨ÎÄ½ÓÊÜ
+//socketå®¢æˆ·ç«¯æŠ¥æ–‡æ¥å—
 int socketclient_recv2(void *handle, unsigned char **buf, int *buflen)
 
 {
 	return 0;
 }
 
-//socket¿Í»§¶Ë»·¾³ÊÍ·Å
+//socketå®¢æˆ·ç«¯ç¯å¢ƒé‡Šæ”¾
 int socketclient_destory2(void **handle)
 
 {
