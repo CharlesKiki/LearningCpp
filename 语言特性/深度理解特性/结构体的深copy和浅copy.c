@@ -11,22 +11,18 @@ typedef struct Teacher
 	
 }Teacher;
 
-
-//编译器的=号操作,只会把指针变量的值,从from  copy 到 to,但 
-//不会 把指针变量 所指 的 内存空间 给copy过去..//浅copy
-
-//结构体中套一个 1级指针 或 二级指针 
-
-//如果 想执行深copy,再显示的分配内存
+/*
+	函数方法：
+*/
 void copyTeacher(Teacher *to, Teacher *from)
 {
 	*to = *from;
 
 	to->pname2 = (char *)malloc(100);
 	strcpy(to->pname2, from->pname2);
-
 	//memcpy(to, from , sizeof(Teacher));
 }
+
 void main51()
 {
 	Teacher t1;
