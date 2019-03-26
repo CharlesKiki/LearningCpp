@@ -14,11 +14,11 @@ int main (void)
     printf("This is the first time I write code Let me show you the %d",num2);
     return 0;
 }
-//return o ¿ÉÒÔÔì³ÉÏÂÒ»¶Î´úÂëµÄ²»ÔËĞĞ? ²»¿ÉÒÔ¶à´Î¶¨Òåint main(void)
+//return o å¯ä»¥é€ æˆä¸‹ä¸€æ®µä»£ç çš„ä¸è¿è¡Œ? ä¸å¯ä»¥å¤šæ¬¡å®šä¹‰int main(void)
 void butler(void)
 {
     printf("I will summon the butler function.\n");
     printf("Yes bring me some tea and writeable CD-ROMS.\n");
-    //butler();ÓĞÒâË¼µÄ´íÎó Èç¹û°ÑÕâ¶Î¼ÓÈë´úÂë ¾Í»áÔì³ÉÖØ¸´µÄbutler´úÂë¿é
+    //butler();æœ‰æ„æ€çš„é”™è¯¯ å¦‚æœæŠŠè¿™æ®µåŠ å…¥ä»£ç  å°±ä¼šé€ æˆé‡å¤çš„butlerä»£ç å—
 
-}  //ÎªÊ²Ã´ÕâÕâÀï²»ÄÜ¼ÓÉÏreturn 0
+}  //ä¸ºä»€ä¹ˆè¿™è¿™é‡Œä¸èƒ½åŠ ä¸Šreturn 0

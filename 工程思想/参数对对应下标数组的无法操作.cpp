@@ -1,9 +1,9 @@
-// 42 1610242852 15°à ÕÅ¿¡×æ
+// 42 1610242852 15ç­ å¼ ä¿Šç¥–
 #include <iostream>
 #include <cstring>
 using namespace std;
 
-class stu //3ÃûÑ§Éú
+class stu //3åå­¦ç”Ÿ
 {
 public:
     void SetID(int i)
@@ -27,18 +27,18 @@ private:
     char name[20];
 };
 
-class cou //5ÃÅ³É¼¨
+class cou //5é—¨æˆç»©
 {
 public:
-    void Setname(char *Name)  //ÓÃÓÚÊäÈëË½ÓĞ±äÁ¿
+    void Setname(char *Name)  //ç”¨äºè¾“å…¥ç§æœ‰å˜é‡
     {
         strcpy(name,Name);
     }
     void Setscore(int *s)
     { 
-        score[0]=  //×¢Òâ£¬ÕâÒ»¶ÎÓ¦¸Ã¸Ä³ÉÕë¶Ô¶ÔÓ¦ÏÂ±êÊı×éµÄ´©²ÎĞÎÊ½
+        score[0]=  //æ³¨æ„ï¼Œè¿™ä¸€æ®µåº”è¯¥æ”¹æˆé’ˆå¯¹å¯¹åº”ä¸‹æ ‡æ•°ç»„çš„ç©¿å‚å½¢å¼
     }
-    char* Getname()  //ÓÃÓÚÊä³öË½ÓĞ±äÁ¿
+    char* Getname()  //ç”¨äºè¾“å‡ºç§æœ‰å˜é‡
     {
         return name;
     }
@@ -57,18 +57,18 @@ int main()
 {
 	stu student[3]={0};
 	cou course[5]={0};
-    for(int i=0;i<=4;i++)  //ÊÕ¼¯ÎåÃÅ¿Î³ÌÃû³Æ
+    for(int i=0;i<=4;i++)  //æ”¶é›†äº”é—¨è¯¾ç¨‹åç§°
     {
         cout<<"Please input "<<i+1<<" names of course"<<endl;
         cin>>course[i].Setname();
     }
-    for(int i=0;i<=2;i++)  //ÊÕ¼¯Ñ§ÉúµÄIDºÍname
+    for(int i=0;i<=2;i++)  //æ”¶é›†å­¦ç”Ÿçš„IDå’Œname
     {
         cout<<"Please input "<<i+1<<" student's ID and name"<<endl;
         cin>>student[i].SetID();
         cin>>student[i].Setname();
     }
-    for(int i=0;i<=2;i++)  //ÊÕ¼¯Ñ§ÉúµÄÎåÃÅ¿Î³Ì³É¼¨
+    for(int i=0;i<=2;i++)  //æ”¶é›†å­¦ç”Ÿçš„äº”é—¨è¯¾ç¨‹æˆç»©
     {
         for(int n=0;n<=4;n++)
         {
@@ -76,8 +76,8 @@ int main()
             cin>>course[n].Getscore();
         }
     }
-	int stumax1,stumax2,stumax3;  //´æ·ÅÈı¸öÑ§ÉúµÄ×î¸ß³É¼¨
-	for(int i=0;i<=2;i++) //¼ÆËãÃ¿Î»Ñ§Éú×î¸ß³É¼¨¶ÔÓ¦µÄ¿Î³ÌÃû³Æ
+	int stumax1,stumax2,stumax3;  //å­˜æ”¾ä¸‰ä¸ªå­¦ç”Ÿçš„æœ€é«˜æˆç»©
+	for(int i=0;i<=2;i++) //è®¡ç®—æ¯ä½å­¦ç”Ÿæœ€é«˜æˆç»©å¯¹åº”çš„è¯¾ç¨‹åç§°
 	{
 		if(i==0)
 		{
