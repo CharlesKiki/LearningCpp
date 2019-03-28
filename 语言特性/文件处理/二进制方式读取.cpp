@@ -1,10 +1,4 @@
 /*二进制方式读取数据*/
-/*  size_t   fread(void   *buffer,size_t   size, size_t count, FILE *stream) 
-  buffer   是读取的数据存放的内存的指针（可以是数组，也可以是新开辟的空间，
-           buffer就是一个索引）   
-  size    是每次读取的字节数   
-  count     是读取次数   
-  stream  是要读取的文件的指针   */
 #include <stdio.h>
 #include <stdlib.h>
 int main()
