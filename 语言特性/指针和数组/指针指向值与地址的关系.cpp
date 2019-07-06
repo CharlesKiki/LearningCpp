@@ -6,14 +6,16 @@ int main()
 {
     int a=2;
     cout<<"The A is 2"<<endl;
-    int *p=NULL;  //注意，指针变量的空值初始化
-    p=&a;  //对变量的取地址=指针变量名代表的地址
+
+    int *p=NULL;    
+    p=&a;           
     cout<<"The &A is "<<&a<<endl;
     cout<<"The p is "<<p<<endl;
 
+    
     int b;
-    int *s=&b;  //指针的初始化为变量地址
-    b=a;  //注意 这里不是a把地址给了b 而是把值给了b而已
+    int *s=&b;
+    b=a;  
     cout<<"The B is "<<*s<<endl;
     cout<<"The &B is "<<&b<<endl;
 

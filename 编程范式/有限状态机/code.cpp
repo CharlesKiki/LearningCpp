@@ -1,5 +1,3 @@
-
-
 #include <string>
 #include <unordered_map>
 #include <functional>
@@ -8,11 +6,10 @@
 
 using namespace std;
 
-
-//---------------状态机架构开始----------------------
 typedef int eState;
 eState NullState = -1;
 
+// 状态机
 class FSM;
 
 // 状态的基类
@@ -66,7 +63,7 @@ public:
     }
 };
 
-// -----------------实际使用例子开始-----------------
+// 测试状态机
 const int State_Idle = 1;
 const int State_Attack = 2;
 const int State_GoHome = 3;
